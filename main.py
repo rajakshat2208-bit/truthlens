@@ -1,19 +1,15 @@
 from fastapi import FastAPI
-from services.pipeline import analyze_articles
 
-
-app = FastAPI(
-    title="TruthLens API",
-    description="AI-powered narrative & fact divergence analyzer",
-    version="0.1.0"
-)
+app = FastAPI(title="TruthLens API")
 
 @app.get("/")
-def health_check():
-    return {"status": "TruthLens is running"}
+def root():
+    return {"message": "TruthLens API is running"}
 
 @app.post("/analyze")
-def analyze(payload: dict):
-    return analyze_articles(payload["articles"])
-
-
+def analyze(data: dict):
+    return {
+        "status": "success",
+        "input": data,
+        "note": "Pipeline temporarily disabled for deployment"
+    }
