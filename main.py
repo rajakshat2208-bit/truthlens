@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from backend.services.pipeline import analyze_articles
+from services.pipeline import analyze_articles
+
 
 app = FastAPI(
     title="TruthLens API",
@@ -14,4 +15,5 @@ def health_check():
 @app.post("/analyze")
 def analyze(payload: dict):
     return analyze_articles(payload["articles"])
+
 
